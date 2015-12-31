@@ -1,0 +1,16 @@
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\bin\Debug\XCLTBTool.DBUtility.dll
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\bin\Debug\XCLTBTool.DBUtility.pdb
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\bin\Debug\IBatisNet.Common.dll
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\bin\Debug\IBatisNet.DataMapper.dll
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\bin\Debug\MySql.Data.dll
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\obj\Debug\XCLTBTool.DBUtility.dll
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\obj\Debug\XCLTBTool.DBUtility.pdb
+D:\MyData\MyGit\Code\XCLTBTool\Web\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\bin\Debug\XCLTBTool.DBUtility.dll
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\bin\Debug\XCLTBTool.DBUtility.pdb
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\bin\Debug\IBatisNet.Common.dll
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\bin\Debug\IBatisNet.DataMapper.dll
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\bin\Debug\MySql.Data.dll
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\obj\Debug\XCLTBTool.DBUtility.dll
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\DBUtility\obj\Debug\XCLTBTool.DBUtility.pdb

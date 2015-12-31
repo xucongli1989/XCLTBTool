@@ -1,0 +1,88 @@
+﻿@{
+    Layout = "~/Views/Shared/MasterView/MainView.cshtml";
+}
+@model Web.Models.ProductListModel
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <center>
+            <h1>以下为【
+                                @if (Model.SearchKeyModel.KeyType == (int)Web.Common.CommonHelper.SearchTypeEnum.天猫搜索关键字)
+                                {
+                                    @Model.SearchKeyModel.KeyName
+                                }
+                                else
+                                {
+                                    @Html.Raw(string.Format("<a href='{0}' target='_blank'>查看链接</a>", Model.SearchKeyModel.KeyName))
+                                }
+                】的查询结果</h1>
+        </center>
+    </div>
+    <div class="panel-body">
+        <div class="row text-right" style="margin:10px;">
+            <a href="@Url.Action("ProductOutPut", "TMSearch", new { searchKeyID=Model.SearchKeyModel.SearchKeyID })" target="_blank" class="btn btn-primary">导出为Excel</a>
+        </div>
+
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">序号</th>
+                    <th class="text-center">图片</th>
+                    <th class="text-center">标题</th>
+                    <th class="text-center">店铺</th>
+                    @*<th class="text-center">店铺所在地</th>*@
+                    <th class="text-center">宝贝所在地</th>
+                    <th class="text-center">价格</th>
+                    <th class="text-center">月成交数</th>
+                    <th class="text-center">累计评价数</th>
+                    <th class="text-center">评分</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (null != Model.ProductList && Model.ProductList.Count > 0)
+                    {
+                        foreach (var m in Model.ProductList)
+                        {
+                    <tr>
+                        <td class="text-center">
+                            @Html.Raw(m.Sort <= 10 ? string.Format("<span class=\"label label-warning\">{0}</span>", m.Sort) : m.Sort.ToString())
+                        </td>
+                        <td class="text-center">
+                            <a href="@Html.Raw(m.ProductURL)" target="_blank">
+                                <img src='@Html.Raw(m.ImgURL)' style="width:40px;height:40px;"  class="XCLProductToolTip" data-content="<img src='@Html.Raw(m.ImgURL)' />" alt="@m.Title"/>
+                            </a>
+                        </td>
+                        <td><a href="@Html.Raw(m.ProductURL)" target="_blank" title="@m.Title">@m.Title</a></td>
+                        <td><a href="@m.ShopURL" target="_blank">@m.ShopName</a></td>
+@*                        <td class="text-center">
+                            @(string.Equals(m.ShopProvince, m.ShopCity) ? m.ShopCity : string.Format("{0}-{1}", m.ShopProvince, m.ShopCity))
+                        </td>*@
+                        <td class="text-center">
+                            @(string.Equals(m.ProductProvince, m.ProductCity) ? m.ProductCity : string.Format("{0}-{1}", m.ProductProvince, m.ProductCity))
+                        </td>
+                        <td class="text-center">@m.Price</td>
+                        
+                        <td class="text-center">@m.MonthDealCount</td>
+                        <td class="text-center">@m.AppraiseCount</td>
+                        <td class="text-center">@m.Rate</td>
+                    </tr>
+                        }
+                    }
+                    else
+                    {
+                    <tr>
+                        <td colspan="100" align="center">未查到任何数据！
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        XCLShouCang.TMSearch.ProductList.Init();
+    });
+</script>

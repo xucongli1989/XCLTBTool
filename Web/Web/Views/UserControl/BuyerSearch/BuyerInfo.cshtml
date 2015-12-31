@@ -1,0 +1,143 @@
+﻿@model XCLShouCang.Model.TB_BuyerInfo
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>
+                        <span class="label label-@(Model.IsSeller?"danger":"info")" style="font-size:18px;">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;
+                            @Model.UserTypeName
+                            （@Model.NickName）
+                        </span>
+                        &nbsp;&nbsp;
+                    </strong>
+                </div>
+                <div class="panel-body">
+                    <div class="row XclUserInfoDiv">
+                        <div class="col-md-6 XclUserInfoDivItem">
+                            <strong>认证类型：</strong>
+                            @Model.CertificateType
+                            @if (!string.IsNullOrEmpty(Model.CertificateLinkImg))
+                            {
+                                <img src="@Model.CertificateLinkImg" />
+                            }
+                        </div>
+
+                        @if (Model.IsSeller)
+                        {
+                            <div class="col-md-6 XclUserInfoDivItem">
+                                <strong>淘宝店铺：</strong><a href="@Model.ShopURL" target="_blank">@Model.ShopName</a>
+                            </div>
+                            <div class="col-md-6 XclUserInfoDivItem">
+                                <strong>创店时间：</strong>@string.Format("{0:yyyy-MM-dd}",Model.ShopCreateTime)
+                            </div>
+                            <div class="col-md-6 XclUserInfoDivItem">
+                                <strong>当前主营：</strong>@Html.Raw(Model.ShopMainType)
+                            </div>
+                            <div class="col-md-6 XclUserInfoDivItem">
+                                <strong>卖家信用：</strong>
+                                <a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">
+                                    @Model.SellerCreditValue
+                                    @if (!string.IsNullOrEmpty(Model.SellerCreditImg))
+                                    {
+                                        <img src="@Model.SellerCreditImg" />
+                                    }
+                                </a>
+                            </div>
+                            <div class="col-md-6 XclUserInfoDivItem">
+                                <strong>宝贝信息：</strong><a href="@Model.ShopURL" target="_blank">出售中的宝贝</a>
+                            </div>
+                        }
+
+                        <div class="col-md-6 XclUserInfoDivItem">
+                            <strong>买家信用：</strong>
+                            <a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">
+                                @Model.BuyerCreditValue
+                                @if(!string.IsNullOrEmpty(Model.BuyerCreditImg)){
+                                    <img src="@Model.BuyerCreditImg" />
+                                }
+                            </a>
+                        </div>
+
+                        <div class="col-md-6 XclUserInfoDivItem">
+                            <strong>所 在 地：</strong>@Html.Raw(Model.Area)
+                        </div>
+                        <div class="col-md-6 XclUserInfoDivItem">
+                            <strong>注册时间：</strong>@string.Format("{0:yyyy-MM-dd}", Model.RegTime)
+                        </div>
+                        <div class="col-md-12 XclUserInfoDivItem">
+                            <div class="alert alert-success">
+                                <a class="btn btn-warning" href="http://amos.alicdn.com/getcid.aw?spm=a1z0b.7.0.0.IFlU3a&v=3&site=cntaobao&groupid=0&s=1&fromid=cntaobao&uid=@(Model.EncodeNickName)" target="_blank">
+                                    <img src="@(Web.Common.CommonHelper.RootURL)Resources/Images/ww.gif" />
+                                </a>
+                                <button class="btn btn-primary" id="btnRatePageView" xcl-url="http://rate.taobao.com/user-rate-@(Model.UserID).htm" xcl-title="账号【@Model.NickName】的信用信息">更多信用信息</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>
+                        @Model.UserTypeName
+                        信用评价信息
+                    </strong>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover" row="table">
+                        <thead>
+                            <tr>
+                                <th colspan="4" class="text-center">
+                                    好评率：<span class="XCLRed">@(Model.GoodAppraiseRate)%</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="text-center">时间</th>
+                                <th class="text-center"><span class="label label-danger">好评</span></th>
+                                <th class="text-center"><span class="label label-warning">中评</span></th>
+                                <th class="text-center"><span class="label label-default">差评</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.IsSeller)
+                            {
+
+                                if (null != Model.SellerAppraiseCountList && Model.SellerAppraiseCountList.Count > 0)
+                                {
+                                    foreach (var m in Model.SellerAppraiseCountList)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@m.AppraiseTimeType</td>
+                                            <td class="text-center"><a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">@m.GoodCount</a></td>
+                                            <td class="text-center"><a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">@m.MiddleCount</a></td>
+                                            <td class="text-center"><a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">@m.BadCount</a></td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (null != Model.BuyerAppraiseCountList && Model.BuyerAppraiseCountList.Count > 0)
+                                {
+                                    foreach (var m in Model.BuyerAppraiseCountList)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@m.AppraiseTimeType</td>
+                                            <td class="text-center"><a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">@m.GoodCount</a></td>
+                                            <td class="text-center"><a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">@m.MiddleCount</a></td>
+                                            <td class="text-center"><a href="http://rate.taobao.com/user-rate-@(Model.UserID).htm" target="_blank">@m.BadCount</a></td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+

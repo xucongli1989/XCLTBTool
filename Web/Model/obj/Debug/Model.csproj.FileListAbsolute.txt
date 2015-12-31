@@ -1,0 +1,10 @@
+D:\MyData\MyGit\Code\XCLTBTool\Web\Model\bin\Debug\Model.dll
+D:\MyData\MyGit\Code\XCLTBTool\Web\Model\bin\Debug\Model.pdb
+D:\MyData\MyGit\Code\XCLTBTool\Web\Model\obj\Debug\Model.dll
+D:\MyData\MyGit\Code\XCLTBTool\Web\Model\obj\Debug\Model.pdb
+D:\MyData\MyGit\Code\XCLTBTool\Web\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\Model\bin\Debug\Model.dll
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\Model\bin\Debug\Model.pdb
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\Model\obj\Debug\Model.dll
+D:\MyData\MyGit\GitHub\XCLTBTool\Web\Model\obj\Debug\Model.pdb

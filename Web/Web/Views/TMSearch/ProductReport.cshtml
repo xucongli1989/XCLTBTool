@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "宝贝报表信息";
+    Layout = "~/Views/Shared/MasterView/MainView.cshtml";
+}
+@model Web.Models.ProductReportModel
+
+<input type="hidden" id="SearchKeyID" value="@Model.SearchKeyModel.SearchKeyID" />
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <center>
+            <h1>
+                以下为【
+                @if (Model.SearchKeyModel.KeyType == (int)Web.Common.CommonHelper.SearchTypeEnum.天猫搜索关键字)
+                {
+                        @Model.SearchKeyModel.KeyName
+                    }else{
+                        @Html.Raw(string.Format("<a href='{0}' target='_blank'>查看链接</a>",Model.SearchKeyModel.KeyName))
+                    }
+                
+                】的统计报表
+            </h1>
+        </center>
+    </div>
+    <div class="panel-body">
+        <div id="divProductCountRep" style="height:300px;"></div>
+        <br />
+        <div id="divProductProvinceCountRep" style="height:300px;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        XCLShouCang.TMSearch.ProductReport.Init();
+    });
+</script>

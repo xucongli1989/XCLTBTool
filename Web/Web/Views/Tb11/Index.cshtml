@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "淘宝双11打折清单，最全清单，最新清单, 2014天猫双11-官方最全爆款商品清单【劲爆全！】，天猫双11清单";
+    Layout = "~/Views/Shared/MasterView/MainView.cshtml";
+}
+
+@model Web.Models.Tb11Model
+
+
+
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        @if (null != Model.TypeNameList && Model.TypeNameList.Count > 0)
+        {
+            foreach (var m in Model.TypeNameList)
+            { 
+                <a  href="@(Web.Common.CommonHelper.RootURL)Tb11/Index/List/@m" class="btn btn-@(string.Equals(Model.CurrentTypeName,m)?"warning":"success")">@m</a>
+            }
+        }
+    </div>
+    <div class="panel-body">
+
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">品类</th>
+                    <th class="text-center">图片</th>
+                    <th class="text-center">商品名称</th>
+                    <th class="text-center">专柜价</th>
+                    <th class="text-center">市场价</th>
+                    <th class="text-center">双11价</th>
+                    <th class="text-center">双11T4会员价</th>
+                    <th class="text-center">折扣力度</th>
+                    <th class="text-center">是否有赠</th>
+                    <th class="text-center">赠品价值</th>
+                    <th class="text-center">商家名称</th>
+                    <th class="text-center">推荐理由</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (null != Model.DataList && Model.DataList.Count > 0)
+                    {
+                        foreach (var m in Model.DataList)
+                        {
+                    <tr>
+                        <td class="text-center">@m.品类</td>
+                        <td class="text-center">
+                            <a href="@Html.Raw(m.商品详情链接)" target="_blank">
+                                <img src='@Html.Raw(m.ImgUrl)' style="width:40px;height:40px;"  class="XCLProductToolTip" data-content="<img src='@Html.Raw(m.ImgUrl)' style='width:220px;height:220px;' />" alt=""/>
+                            </a>
+                        </td>
+                        <td><a href="@m.商品详情链接" target="_blank" title="@m.商品名称">@m.商品名称</a></td>
+                        <td class="text-center">@m.专柜价</td>
+                        <td class="text-center">@m.市场价</td>
+                        <td class="text-center">@m.双11价</td>
+                        <td class="text-center">@m.双11T4会员价</td>
+                        <td class="text-center">@m.折扣力度</td>
+                        <td class="text-center">@m.是否有赠</td>
+                        <td class="text-center">@m.赠品价值</td>
+                        <td class="text-center">@m.商家名称</td>
+                        <td class="text-center ">
+                            <span class="XCLRemarkToolTip" data-content="@m.推荐理由">
+                            @XCLNetTools.StringHander.StringUtil.GetSubString(m.推荐理由,10,"...")
+                                </span>
+                        </td>
+                    </tr>
+                        }
+                    }
+                    else
+                    {
+                    <tr>
+                        <td colspan="100" align="center">未查到任何数据！
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        XCLShouCang.Tb11.Index.Init();
+    });
+</script>

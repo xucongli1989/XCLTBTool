@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/MasterView/MainView.cshtml";
+}
+@model Web.Models.HomeModel
+<form id="formTMSearch" name="formTMSearch">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">最好用的淘宝信息查询工具箱</h3>
+        </div>
+        <div class="panel-body">
+            <input type="hidden" id="hdSearchTypeValue" name="hdSearchTypeValue" value="0" />
+            <br />
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="input-group form-group-lg">
+                        <div class="input-group-btn">
+                            <button type="button" id="btnSearchType" class="btn btn-success dropdown-toggle btn-lg" data-toggle="dropdown" xcl-value="2"><span class="btnText">1、淘宝账号</span> <span class="caret"></span></button>
+                            <ul id="btnSearchTypeMenu" class="dropdown-menu" role="menu">
+
+                                @for (int i = 0; i < Web.Common.CommonHelper.SearchTypeEnumList.Count; i++)
+                                {
+                                    var m = Web.Common.CommonHelper.SearchTypeEnumList[i];
+                                    <li><a href="javascript:void(0);" xcl-tip="@m.Description" xcl-value="@m.Value">@string.Format("{0}、{1}", i + 1, m.Text)</a></li>
+                                }
+                            </ul>
+                        </div>
+                        <input type="text" id="txtTMSearchKey" name="kw" class="form-control" placeholder="指定关键字，如：手机" />
+                        <div class="input-group-btn">
+                            <button type="button" id="btnTMSearch" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-search"></span>&nbsp;<strong>搜 一 下</strong></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <br />
+                    <div class="alert alert-info" role="alert" id="alterTMSearch" style="display: none;"></div>
+
+                    <script type="text/html" id="divSearchingTemp">
+                        <img src="@(Web.Common.CommonHelper.RootURL)Resources/Images/loading1.gif" />
+                        {{Message}}
+                    </script>
+
+                    <script type="text/html" id="divSearchSuccessTemp">
+                        <p><strong>查询成功，已获取到{{RecCount}}条数据，历时{{UseSecond}}秒：</strong></p>
+                        <a href="@(Web.Common.CommonHelper.RootURL)TMSearch/ProductList/{{KeyID}}" class="btn btn-info" target="_blank">宝贝信息列表</a>
+                        <a href="@(Web.Common.CommonHelper.RootURL)ProductReport/Index/{{KeyID}}" class="btn btn-success" target="_blank">报表统计分析</a>
+                    </script>
+                    
+                    <br />
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            <div id="divBuyerInfo" style="display:none;"></div>
+
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        XCLShouCang.Home.Init();
+    });
+</script>
+
+@Html.Raw(Web.Config.StaticFileVersion.StaticFileVersionConfig.GetFileUrl("js", "SignalR.js"))
+<script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>

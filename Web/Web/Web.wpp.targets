@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?> 
+<Project xmlns="http://schemas.microsoft.com/developer/MsBuild/2003"> 
+    <PropertyGroup> 
+        <YUICompressor>D:\Soft\yui\yuicompressor-2.4.7.jar</YUICompressor> 
+    </PropertyGroup> 
+    <ItemGroup> 
+        <JavaScriptFiles Include="$(ProjectDir)$(_PackageTempDir)\**\*.js"/>
+        <CssFiles Include="$(ProjectDir)$(_PackageTempDir)\**\*.css"/>
+    </ItemGroup> 
+    <Target Name="Compressor" AfterTargets="CopyAllFilesToSingleFolderForPackage" > 
+        <Message Importance="high" Text="YUICompressor JavaScriptFiles" ></Message> 
+        <Exec Command="java.exe -jar $(YUICompressor) -o %(JavaScriptFiles.Identity) %(JavaScriptFiles.Identity)" />
+        <Message Importance="high" Text="YUICompressor CssFiles" ></Message>
+        <Exec Command="java.exe -jar $(YUICompressor) -o %(CssFiles.Identity) %(CssFiles.Identity)" />
+    </Target>
+</Project>

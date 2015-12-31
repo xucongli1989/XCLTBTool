@@ -1,0 +1,130 @@
+﻿@mainColor: #00697d;/*主色彩*/
+@mainBgColor:#f2f2f2;/*主背景色*/
+
+
+/*common start*/
+.XCLRed
+{
+    color: #f00;
+}
+
+.XCLRedBolder
+{
+    color: #f00;
+    font-weight: bolder;
+}
+a
+{
+    color:@mainColor;
+    text-decoration:none;
+}
+a:hover
+{
+    text-decoration:underline;
+}
+/*common end*/
+
+html, body, .XCLMainDiv
+{
+    height: 100%;
+    font-family: "Microsoft YaHei",Sans-Serif;
+    width: 100%;
+    margin: 0;
+    padding: 0px;
+    min-width:1000px;
+    width:auto;
+    background:@mainBgColor;
+}
+
+body > .XCLMainDiv
+{
+    height: auto;
+    min-height: 100%;
+}
+
+.XCLCenterDiv
+{
+    padding-bottom: 70px;
+}
+
+.XCLBottomDiv
+{
+    position: relative;
+    margin-top: -70px;
+    height: 70px;
+    padding-top: 10px;
+    clear: both;
+    background: @mainColor;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+    .XCLBottomDiv a
+    {
+        color: #fff;
+    }
+
+
+.XclUserInfoDiv .XclUserInfoDivItem
+{
+    line-height: 30px;
+}
+
+
+
+.divMenu
+{
+    width:100%;height:70px;background:@mainColor;
+}
+    .divMenu .divLogo
+    {
+        width:200px;height:70px;font-weight:bolder;font-size:40px;color:#fff;
+        float:left;
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .divMenu .divMenuItem
+    {
+        float:left;
+        height:70px;
+    }
+
+    .divMenu .divMenuItem ul
+    {
+        width:100%;
+        list-style-type:none;
+        list-style-position:inside;
+    }
+
+        .divMenu .divMenuItem ul li
+        {
+            height:70px;
+            min-width:100px;
+            width:auto;
+            text-align:center;
+            float:left;
+            margin-right:10px;
+        }
+
+        .divMenu .divMenuItem ul li a
+        {
+            color:#fff;
+            line-height:70px;
+            font-size:20px;
+            font-weight:bolder;
+            display:block;
+            padding-left:10px;
+            padding-right:10px;
+            text-decoration:none;
+        }
+
+        .divMenu .divMenuItem .activeItem
+        {
+            background:@mainBgColor;
+            color:#092;
+            border-top:solid 5px #092;
+        }
+
+

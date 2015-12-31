@@ -1,0 +1,23 @@
+﻿@*<a href="@Url.Action("Index", "Home")" class="LogoInfo">
+    <img src="@Url.Content("~/Resources/Images/logo/logo.png")" />
+    @Web.Common.CommonHelper.WebInfo.WebName
+</a>*@
+
+<div class="divMenu">
+    <div class="divLogo">
+        大 店 主
+    </div>
+    <div class="divMenuItem">
+        <ul>
+            <li>
+                <a href="@Url.Action("Index", "Home")" id="menuTBSearch">淘宝信息查询</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Express")" id="menuExpress">快 递 查 询</a>
+            </li>
+@*            <li>
+                <a href="@(Web.Common.CommonHelper.RootURL)Tb11/Index" id="menuTb11">天猫双11爆款清单</a>
+            </li>*@
+        </ul>
+    </div>
+</div>

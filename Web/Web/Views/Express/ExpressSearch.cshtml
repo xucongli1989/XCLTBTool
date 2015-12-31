@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "快递查询";
+    Layout = "~/Views/Shared/MasterView/MainView.cshtml";
+}
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">快递信息实时查询</h3>
+  </div>
+  <div class="panel-body">
+        <iframe name="kuaidi100" src="http://www.kuaidi100.com/frame/index.html" style="width:100%;height:700px;" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        XCLShouCang.Express.ExpressSearch.Init();
+    });
+</script>

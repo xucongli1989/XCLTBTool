@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    @Html.Partial("~/Views/Shared/Header.cshtml")
+    @RenderSection("SectionHeader", false)
+</head>
+<body>
+    <div class="panel panel-green XCLMainDiv" style="border:0px;">
+        @Html.Partial("~/Views/Shared/UserControls/UCNavToolBar.cshtml")
+        <div class="panel-body XCLCenterDiv container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="XCLBottomDiv">
+        @Html.Partial("~/Views/Shared/Footer.cshtml")
+        @RenderSection("SectionFooter", false)
+    </div>
+</body>
+</html>
